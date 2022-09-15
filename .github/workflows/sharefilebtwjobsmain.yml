@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Data Sharing between jobs
+
+# Controls when the workflow will run
+on: [push]
+
+jobs:
+
+  job1:
+    runs-on: ubuntu-latest
+    - shell: bash
+      run:
+      cal 2022 > calendar.txt
+    - name: Upload the callendar.txt file
+      uses: actions/upload-artifact@v3
+      with:
+        name: calendar
+        path: calendar.txt
+      
+  job2:
+    name: Download file
+    needs: [job1]
+    runs-on: windows-latest
+    steps: 
+      -name: Download the calendar.txt file
+      uses: actions/download-artifact@v3
+      with:
+        name: calendar
+        path: calendar.txt
+
+  job3:
+    runs-on: macOS-latest
