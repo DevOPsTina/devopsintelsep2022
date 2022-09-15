@@ -18,8 +18,14 @@ jobs:
   runs-on:
     windows-latest
   steps:
-    - name: Eisplay env Variables
+    - name: Display env Variables
       run: echo "Hi ${{env.firstName}}"     #echo is to showing value output in the console
+    - name:  Display Last name Variable
+      run: echo "Hi ${{env.lastName}}"
+    - name: Display Job
+      run: echo "${{job}}"
+      env:
+        job: "Developer"
     
  ubuntu-job:
    runs-on:
