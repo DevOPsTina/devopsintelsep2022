@@ -19,11 +19,11 @@ jobs:
     windows-latest
   steps:
     - name: Eisplay env Variables
-    - run: echo "Hi ${{firstName}}"     #echo is to showing value output in the console
+    - run: echo "Hi ${{env.firstName}}"     #echo is to showing value output in the console
     
  ubuntu-job:
    runs-on:
       ubuntu-latest
    steps: 
       - name: Display env variables
-      - run: echo "Hi ${{lastName}}"
+      - run: echo "Hi ${{env.lastName}}"
