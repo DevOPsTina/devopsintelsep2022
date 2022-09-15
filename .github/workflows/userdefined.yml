@@ -1,0 +1,29 @@
+# This is to understand user defined variables
+
+name: User defined Variable Demo
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+env:
+    firstName: Tina
+    lastName: Xia
+
+
+# Read User Defined Variables from environment
+jobs:
+ windows-job:
+  runs-on:
+    windows-latest
+  steps:
+    - name: Eisplay env Variables
+    - run: echo "Hi ${{firstName}}"     #echo is to showing value output in the console
+    
+ ubuntu-job:
+   runs-on:
+      ubuntu-latest
+   steps: 
+      - name: Display env variables
+      - run: echo "Hi ${{lastName}}"
